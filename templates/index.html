@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Gold</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
+
+    <style>
+        #farm, #casino, #cave, #house {
+            border: 3px solid purple;
+            padding: 50px;
+            margin: 20px;
+            font-family: 'Yanone Kaffeesatz', sans-serif;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #gold {
+            margin: 50px 50px 50px 405px;
+        }
+
+        form input {
+            background-color: gold;
+            border: gold;
+            padding: 5px;
+        }
+
+        .activiates {
+            width: 1055px;
+            border: 3px solid purple;
+        }
+    </style>
+
+</head>
+<body>
+    <h3 id="gold">Your Gold: {{ goldCount }}</h3>
+
+    <div class="container">
+        <div class="row">
+
+            
+        <!-- Farm -->
+        <div id="farm">
+            <h3>Farm</h3>
+            <p>(earns 10-20 golds)</p>
+            <form action="/process_money" method="post">
+                <input type="hidden" name="hidden" value="farm" />
+                <input type="submit" value="Find Gold!" name="submit">
+            </form>
+        </div>
+
+        <div id="cave">
+            <h3>Cave</h3>
+            <p>(earns 5-10 golds)</p>
+            <form action="/process_money" method="post">
+                <input type="hidden" name="hidden" value="cave" />
+                <input type="submit" value="Find Gold!" name="submit">
+            </form>
+        </div>
+
+        <br>
+
+        <div id="house">
+            <h3>House</h3>
+            <p>(earns 2-5 golds)</p>
+            <form action="/process_money" method="post">
+                <input type="hidden" name="hidden" value="house" />
+                <input type="submit" value="Find Gold!" name="submit">
+            </form>
+        </div>
+
+
+        <div id="casino">
+            <h3>Casino</h3>
+            <p>(earns/takes 0-50 golds)</p>
+            <form action="/process_money" method="post">
+                <input type="hidden" name="hidden" value="casino" />
+                <input type="submit" value="Find Gold!" name="submit">
+            </form>
+        </div> 
+
+      </div>
+
+      <br>
+
+      <h3>Activiates:</h3>
+      <div class="activiates">
+
+            {% if activities %}
+            <ul>
+                {% for class, activity in activities %}
+                <li class={{class}}>{{activity}}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+      </div> 
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
